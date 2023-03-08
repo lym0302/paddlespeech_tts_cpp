@@ -1,3 +1,4 @@
+#include <filesystem>
 #include "front/front_interface.h"
 
 namespace speechnn {
@@ -104,7 +105,7 @@ int FrontEngineInterface::init() {
 }
 
 int FrontEngineInterface::ReadConfFile() {
-    if (!speechnn::File::is_existence(_conf_file.c_str())) {
+    if (!std::filesystem::exists(_conf_file)) {
         LOG(ERROR) << "configuration file " << _conf_file << " does not exists. ";
         return -1;
     }
@@ -158,7 +159,7 @@ int FrontEngineInterface::Trand2Simp(const std::wstring &sentence, std::wstring 
 }
 
 int FrontEngineInterface::GenDict(const std::string &file, std::map<std::string, std::string> &map) {
-    if (!speechnn::File::is_existence(file.c_str())) {
+    if (!std::filesystem::exists(file)) {
         LOG(ERROR) << "configuration file " << file << " does not exists. ";
         return -1;
     }
