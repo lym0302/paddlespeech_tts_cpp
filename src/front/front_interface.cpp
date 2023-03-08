@@ -105,6 +105,11 @@ int FrontEngineInterface::init() {
 }
 
 int FrontEngineInterface::ReadConfFile() {
+    std::ifstream file(_conf_file);
+    if (!file.good()) {
+        LOG(ERROR) << "configuration file " << _conf_file << " does not exist. ";
+        return -1;
+    }
     std::ifstream is(_conf_file.c_str(), std::ifstream::in);
     if (!is.good()) {
         LOG(ERROR) << "Cannot open config file: " << _conf_file;
@@ -154,10 +159,15 @@ int FrontEngineInterface::Trand2Simp(const std::wstring &sentence, std::wstring 
     return 0;
 }
 
-int FrontEngineInterface::GenDict(const std::string &file, std::map<std::string, std::string> &map) {
-    std::ifstream is(file.c_str(), std::ifstream::in);
+int FrontEngineInterface::GenDict(const std::string &dict_file, std::map<std::string, std::string> &map) {
+    std::ifstream file(dict_file);
+    if (!file.good()) {
+        LOG(ERROR) << "dict file " << dict_file << " does not exist. ";
+        return -1;
+    }
+    std::ifstream is(dict_file.c_str(), std::ifstream::in);
     if (!is.good()) {
-        LOG(ERROR) << "Cannot open config file: " << file;
+        LOG(ERROR) << "Cannot open dict file: " << dict_file;
         return -1;
     }
     std::string line, key, value;
