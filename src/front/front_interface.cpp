@@ -1,4 +1,3 @@
-#include <fstream>
 #include "front/front_interface.h"
 
 namespace speechnn {
