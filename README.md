@@ -9,8 +9,10 @@ sudo apt install build-essential cmake
 
 # CentOS
 sudo yum groupinstall "Development Tools"
-sudo yum install cmake wget tar unzip
+sudo yum install cmake
 ```
+
+If your cmake version is too old, you can go here to download a precompiled new version: https://cmake.org/download/
 
 ## Build
 
