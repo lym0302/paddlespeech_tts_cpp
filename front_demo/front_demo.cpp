@@ -11,8 +11,7 @@ DEFINE_string(front_conf, "./front_demo/front.conf", "Front conf file");
 
 
 int main(int argc, char** argv) {
-    //google::ParseCommandLineFlags(&argc, &argv, true);
-    ParseCommandLineFlags(&argc, &argv, true);
+    gflags::ParseCommandLineFlags(&argc, &argv, true);
     // 实例化文本前端引擎
     speechnn::FrontEngineInterface *front_inst = nullptr;
     front_inst = new speechnn::FrontEngineInterface(FLAGS_front_conf);
